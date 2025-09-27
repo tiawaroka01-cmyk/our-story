@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- CSS Styling (Tema MARBLE GALAXY: Soft Light & Bright Accents) --- */
+        /* --- CSS Styling (Tidak diubah karena sudah bagus) --- */
         :root {
             /* Tema Marmer Cerah */
-            --primary-color: #ff69b4; /* Bright Warm Pink - Aksen Utama/Tombol */
-            --secondary-color: #00bfff; /* Cool Light Blue/Cyan - Judul/Penting */
-            --accent-color: #c792ea; /* Soft Lavender - Highlight Tambahan */
-            --bg-color: #282c3f; /* Deep Grayish Blue - Latar Belakang Luar */
-            --card-bg: #f7f7f9; /* Near White / Marble - Latar Belakang Kartu */
-            --text-color: #282c3f; /* Deep Blue Text - Teks Utama (kontras di latar terang) */
-            --light-text: #6c757d; /* Soft Gray Text */
-            --input-bg: #e9ecef; /* Input field background */
+            --primary-color: #ff69b4; 
+            --secondary-color: #00bfff;
+            --accent-color: #c792ea;
+            --bg-color: #282c3f;
+            --card-bg: #f7f7f9;
+            --text-color: #282c3f;
+            --light-text: #6c757d;
+            --input-bg: #e9ecef;
         }
 
         body {
@@ -38,7 +38,6 @@
             width: 100%;
             max-width: 600px;
             background-color: var(--card-bg);
-            /* Bayangan sedikit lebih lembut di latar terang */
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
             padding: 30px;
             margin: 20px 15px;
@@ -58,7 +57,6 @@
             text-align: center;
             margin-bottom: 20px;
             font-weight: 700;
-            /* Efek glow tipis di warna cerah */
             text-shadow: 0 0 3px rgba(0, 191, 255, 0.3); 
         }
 
@@ -76,12 +74,12 @@
         .profile-photo {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* Membuat foto bulat */
+            border-radius: 50%;
             object-fit: cover;
             margin: 20px auto;
             display: block;
             border: 5px solid var(--primary-color);
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); /* Sedikit efek glow pink */
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
         }
 
         /* --- Button Styling --- */
@@ -91,7 +89,7 @@
             padding: 15px;
             margin-top: 25px;
             background-color: var(--primary-color);
-            color: var(--card-bg); /* Teks terang di tombol pink */
+            color: var(--card-bg);
             text-align: center;
             border: none;
             border-radius: 10px;
@@ -108,7 +106,7 @@
         }
 
         .btn:disabled {
-            background-color: #ced4da; /* Warna abu-abu yang lebih terang */
+            background-color: #ced4da;
             cursor: not-allowed;
             color: var(--light-text);
         }
@@ -161,11 +159,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: var(--card-bg); /* Pastikan ikon tetap cerah */
+            background-color: var(--card-bg);
         }
 
         .icon-item:hover {
-            background-color: var(--input-bg); /* Hover slightly lighter card bg */
+            background-color: var(--input-bg);
             color: var(--secondary-color);
             box-shadow: 0 0 15px var(--secondary-color);
             transform: scale(1.05);
@@ -174,7 +172,7 @@
         .icon-item.clicked {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            color: var(--card-bg); /* Teks terang saat di klik */
+            color: var(--card-bg);
             box-shadow: 0 0 15px var(--primary-color);
         }
 
@@ -185,7 +183,7 @@
         .icon-reveal-text {
             margin-top: 20px;
             padding: 15px;
-            background-color: var(--input-bg); /* Slightly darker reveal box */
+            background-color: var(--input-bg);
             border-radius: 15px;
             font-style: italic;
             font-weight: 600;
@@ -206,7 +204,7 @@
             align-items: flex-start;
             margin-bottom: 15px;
             padding: 15px;
-            background-color: var(--input-bg); /* Darker stripe/detail bg */
+            background-color: var(--input-bg);
             border-left: 5px solid var(--accent-color);
             border-radius: 8px;
             transition: transform 0.2s;
@@ -275,7 +273,6 @@
             top: 0;
             width: 100%;
             height: 100%;
-            /* Latar belakang modal gelap agar marmer cerah terlihat kontras */
             background-color: rgba(0,0,0,0.8); 
             padding-top: 60px;
             overflow: auto;
@@ -338,7 +335,7 @@
 </head>
 <body>
     
-    <audio id="myAudio" loop autoplay>
+    <audio id="myAudio" loop>
         <source src="here-with-me.mp3" type="audio/mpeg">
         <source src="here-with-me.ogg" type="audio/ogg">
         Your browser does not support the audio element.
@@ -363,7 +360,7 @@
         <div id="login-page" class="page active">
             <h2>Halaman Login</h2>
             <p class="center-text">Who are you?</p>
-            <input type="text" id="login-input" placeholder="Enter your answer here..." onkeypress="if(event.keyCode==13) validateLogin()">
+            <input type="text" id="login-input" placeholder="Enter your answer here..." autocomplete="off">
             <button id="login-btn" class="btn" onclick="validateLogin()">Enter</button>
             <p id="login-feedback" class="center-text"></p>
             <p class="center-text" style="margin-top: 30px; font-size: 0.8em; color: var(--light-text);">*Click 'Enter' once to enable background music (if autoplay is blocked by browser).</p>
@@ -543,9 +540,10 @@
         };
 
         // --- GLOBAL VARIABLES ---
-        const CORRECT_ANSWER = "your buddy";
+        // PENTING: Menggunakan 'your buddy' rentan dilihat di Source Code. Ganti dengan password unik!
+        const CORRECT_ANSWER = "your buddy"; // Ganti dengan jawaban yang lebih unik
         let openedChats = new Set();
-        let clickedStandOut = false;
+        let clickedStandOut = false; // Variabel ini tidak digunakan di logic Anda, saya bisa menghapusnya atau membiarkannya. Saya biarkan untuk jaga-jaga.
         let clickedRandomChats = new Set();
         let currentFavoriteCard = null;
 
@@ -553,7 +551,7 @@
         function nextPage(currentPageId, targetPageId) {
             document.getElementById(currentPageId).classList.remove('active');
             document.getElementById(targetPageId).classList.add('active');
-            window.scrollTo(0, 0); // Scroll to top for new page
+            window.scrollTo(0, 0);
         }
 
         // --- PAGE 1: LOGIN LOGIC ---
@@ -562,12 +560,12 @@
             const feedback = document.getElementById('login-feedback');
             const audio = document.getElementById('myAudio');
 
-            // Attempt to play audio (needed for browser autoplay policies)
+            // Logic untuk mencoba memutar audio saat ada interaksi pertama
             audio.play().catch(error => {
                 console.log("Autoplay blocked. User interaction required.");
-                // We'll let the user continue even if audio fails to play immediately
             });
 
+            // TRIM & Lowercase untuk memastikan jawaban sesuai (case-insensitive)
             if (input.value.toLowerCase().trim() === CORRECT_ANSWER) {
                 feedback.innerHTML = '<span class="highlight">Access Granted! Welcome back! 😊</span>';
                 setTimeout(() => {
@@ -585,16 +583,17 @@
             const revealBox = document.getElementById('chat-reveal');
             const continueBtn = document.getElementById('chat-continue-btn');
             
-            // Mark element as clicked
-            element.classList.add('clicked');
-            
-            // Show the text
+            // Toggle class clicked agar bisa di-klik beberapa kali
+            const isClicked = element.classList.contains('clicked');
+            element.classList.add('clicked'); // Tetap tambahkan class agar terwarna
+
+            // Tampilkan teks
             revealBox.textContent = text;
 
-            // Add ID to the set
+            // Tambahkan ID ke set
             clickedRandomChats.add(element.dataset.id);
 
-            // Check if all 3 are clicked
+            // Cek apakah semua 3 sudah di-klik
             if (clickedRandomChats.size === 3) {
                 continueBtn.disabled = false;
                 continueBtn.textContent = 'Continue ➡ (All stories revealed!)';
@@ -605,7 +604,7 @@
         function revealStandOut(element, emoji, text) {
             const revealBox = document.getElementById('standout-reveal');
             
-            // Mark element as clicked (optional, but good for visual feedback)
+            // Mark element as clicked
             element.classList.add('clicked');
             
             // Show the text
@@ -624,7 +623,7 @@
             document.getElementById('modalChatQuote').textContent = data.quote;
             document.getElementById('modalAdditionalNarasi').textContent = data.additional;
 
-            // Check if this card is currently the favorite
+            // Update state tombol Favorite
             if (cardId === currentFavoriteCard) {
                 favoriteBtn.classList.add('favorited');
                 document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorited!';
@@ -633,13 +632,13 @@
                 document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorite';
             }
             
-            // Set data attribute for the favorite function to know which card to manage
+            // Set data attribute untuk fungsi favorite
             favoriteBtn.setAttribute('data-card-id', cardId);
             
             // Show modal
             modal.style.display = "block";
             
-            // Mark card as opened (for continue button logic)
+            // Mark card as opened (untuk continue button logic)
             cardElement.classList.add('card-opened');
             openedChats.add(cardId);
             
@@ -654,16 +653,14 @@
         // Favorite button handler
         document.getElementById('favoriteBtn').onclick = function() {
             const cardId = parseInt(this.getAttribute('data-card-id'));
-            const cards = document.querySelectorAll('.chat-card');
             
-            // Logic to handle favorite/unfavorite
+            // Unfavorite jika sudah difavoritkan
             if (cardId === currentFavoriteCard) {
-                // Unfavorite
                 currentFavoriteCard = null;
                 this.classList.remove('favorited');
                 document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorite';
             } else {
-                // Set new favorite
+                // Set favorite baru
                 currentFavoriteCard = cardId;
                 this.classList.add('favorited');
                 document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorited!';
@@ -688,11 +685,23 @@
             }
         }
         
-        // --- Initialization on load (ensure first page is correct) ---
+        // --- Initialization on load (ensure first page is correct and input focus) ---
         document.addEventListener('DOMContentLoaded', () => {
              // Set the initial active page (Login Page)
              document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-             document.getElementById('login-page').classList.add('active');
+             const loginPage = document.getElementById('login-page');
+             loginPage.classList.add('active');
+             
+             // Fokuskan input saat halaman login aktif
+             document.getElementById('login-input').focus();
+        });
+
+        // Menambahkan listener untuk 'Enter' di halaman login (seperti yang Anda rencanakan)
+        document.getElementById('login-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                validateLogin();
+            }
         });
 
     </script>
