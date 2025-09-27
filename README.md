@@ -1,2 +1,709 @@
-# our-story
-from here all will start
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Buddy: Trial Version Anniversary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- CSS Styling (Tidak diubah karena sudah bagus) --- */
+        :root {
+            /* Tema Marmer Cerah */
+            --primary-color: #ff69b4; 
+            --secondary-color: #00bfff;
+            --accent-color: #c792ea;
+            --bg-color: #282c3f;
+            --card-bg: #f7f7f9;
+            --text-color: #282c3f;
+            --light-text: #6c757d;
+            --input-bg: #e9ecef;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--card-bg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+            padding: 30px;
+            margin: 20px 15px;
+            border-radius: 20px;
+            animation: fadeIn 0.8s ease-out;
+            border-top: 10px solid var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Headings and Text --- */
+        h1, h2 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 0 3px rgba(0, 191, 255, 0.3); 
+        }
+
+        h2 { font-size: 1.8em; }
+
+        p { margin-bottom: 15px; text-align: justify; }
+
+        .center-text { text-align: center; margin: 20px 0; }
+
+        .highlight { color: var(--primary-color); font-weight: 600; }
+
+        hr { border-color: var(--input-bg); }
+
+        /* --- Profile Photo Styling --- */
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
+        /* --- Button Styling --- */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            background-color: var(--primary-color);
+            color: var(--card-bg);
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+        }
+
+        .btn:hover:not(:disabled) {
+            background-color: #d8438f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn:disabled {
+            background-color: #ced4da;
+            cursor: not-allowed;
+            color: var(--light-text);
+        }
+
+        /* --- Login Styling --- */
+        #login-page input[type="text"] {
+            width: 95%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            font-size: 1.1em;
+            text-align: center;
+            background-color: var(--input-bg); 
+            color: var(--text-color);
+            transition: border-color 0.3s;
+        }
+
+        #login-page input[type="text"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        #login-feedback {
+            color: var(--primary-color);
+            margin-top: 10px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* --- Icon Grid (Chat Page & Stand Out Page) --- */
+        .icon-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .icon-item {
+            cursor: pointer;
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            border: 3px solid var(--secondary-color);
+            border-radius: 50%;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--card-bg);
+        }
+
+        .icon-item:hover {
+            background-color: var(--input-bg);
+            color: var(--secondary-color);
+            box-shadow: 0 0 15px var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .icon-item.clicked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--card-bg);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .icon-item .fa-solid {
+            font-size: 2.5em;
+        }
+
+        .icon-reveal-text {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--input-bg);
+            border-radius: 15px;
+            font-style: italic;
+            font-weight: 600;
+            text-align: center;
+            min-height: 40px;
+            border: 1px dashed var(--accent-color);
+            animation: popUp 0.5s ease-out;
+        }
+        
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- About My Buddy Detail --- */
+        .buddy-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: var(--input-bg);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .buddy-detail:hover {
+            transform: translateX(5px);
+            background-color: #e9e9eb; 
+        }
+
+        .buddy-detail .emoji {
+            font-size: 1.8em;
+            margin-right: 15px;
+            width: 30px;
+            flex-shrink: 0;
+        }
+
+        .buddy-detail p { margin: 0; text-align: left; }
+
+        /* --- Climax Page (Chat Cards) --- */
+        .chat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .chat-card {
+            background-color: var(--input-bg);
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            text-align: center;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chat-card:hover {
+            transform: translateY(-5px);
+            background-color: #e9e9eb; 
+        }
+
+        .card-icon { font-size: 2em; color: var(--secondary-color); }
+        .card-preview { font-weight: 600; margin-top: 5px; font-size: 0.9em; color: var(--text-color); }
+        
+        .card-preview small {
+            display: block;
+            font-size: 0.75em;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        .card-opened { border-color: var(--primary-color); }
+
+        /* --- Modal Styling --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8); 
+            padding-top: 60px;
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 85%;
+            max-width: 450px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            animation: modalOpen 0.3s ease-out;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .close-btn { color: var(--light-text); float: right; font-size: 28px; font-weight: bold; }
+        .close-btn:hover, .close-btn:focus { color: var(--primary-color); text-decoration: none; cursor: pointer; }
+
+        .chat-quote {
+            background-color: var(--input-bg); 
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-style: italic;
+            font-weight: 600;
+            border-left: 5px solid var(--primary-color);
+            font-size: 1.1em;
+        }
+
+        .modal-button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-favorite {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            font-weight: 600;
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            transition: all 0.2s;
+        }
+
+        .btn-favorite.favorited {
+            background-color: var(--primary-color);
+            color: var(--card-bg);
+            border-color: var(--primary-color);
+        }
+        
+        /* --- General Page Control --- */
+        .page { display: none; width: 100%; }
+        .page.active { display: block; }
+
+    </style>
+</head>
+<body>
+    
+    <audio id="myAudio" loop>
+        <source src="here-with-me.mp3" type="audio/mpeg">
+        <source src="here-with-me.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <div id="chatModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modalTitle" style="color: var(--secondary-color);"></h3>
+                <p id="modalIntroNarasi" style="font-size: 0.9em;"></p>
+                <div class="chat-quote" id="modalChatQuote"></div>
+                <p id="modalAdditionalNarasi" style="font-size: 0.9em; font-style: italic;"></p>
+                <div class="modal-button-group">
+                    <button id="favoriteBtn" class="btn-favorite">
+                        <span id="favoriteText"><i class="fa-solid fa-heart"></i> Favorite</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="login-page" class="page active">
+            <h2>Halaman Login</h2>
+            <p class="center-text">Who are you?</p>
+            <input type="text" id="login-input" placeholder="Enter your answer here..." autocomplete="off">
+            <button id="login-btn" class="btn" onclick="validateLogin()">Enter</button>
+            <p id="login-feedback" class="center-text"></p>
+            <p class="center-text" style="margin-top: 30px; font-size: 0.8em; color: var(--light-text);">*Click 'Enter' once to enable background music (if autoplay is blocked by browser).</p>
+        </div>
+
+        <div id="opening-page" class="page">
+            <h2>Hello, my handsome buddy 👋</h2>
+            <hr style="border-color: var(--accent-color);">
+            
+            <img src="your-friends-photo.jpg" alt="Photo of my friend" class="profile-photo">
+
+            <h1>From Swipe Right to Right Person: Our Story</h1>
+            <p class="center-text">(1 Month Free Trial)</p>
+            <p class="center-text" style="font-style: italic; color: var(--primary-color); font-weight: 600;">
+                Fun fact: our first meeting was on August 28, 2025...
+                so this is like a trial version anniversary 😆
+            </p>
+            <button class="btn" onclick="nextPage('opening-page', 'birthday-page')">Continue ➡</button>
+        </div>
+
+        <div id="birthday-page" class="page">
+            <h2>By the way Happy Level-Up Day, My Buddy! 🎉</h2>
+            <hr style="border-color: var(--accent-color);">
+            <p>Turns out you were secretly turning 30 on September 17... and you didn't tell me anything 😏</p>
+            <p>I know you really don't like parties, don't like a fuss…</p>
+            <p>But hey, 30 isn't a small number, it's an official level up. Getting more mature, wiser, and also more random in your chats 🤭</p>
+            <p>So I won't give you big balloons or a cake. Just this wish from me:</p>
+            <p class="center-text">I hope you're always healthy, happier, and continue to be the best buddy in the world <span class="highlight">💖</span></p>
+            <p class="center-text" style="font-weight: 700; color: var(--secondary-color);">
+                Just consider this not a celebration, but a sweet reminder that you can't hide from me, my buddy 😎
+            </p>
+            <button class="btn" onclick="nextPage('birthday-page', 'chat-page')">➡ Continue to our story at Bot Leo</button>
+        </div>
+
+        <div id="chat-page" class="page">
+            <h2>Our Very Random Chats 💬</h2>
+            <p class="center-text">Click the icons below to see our random stories.</p>
+
+            <div class="icon-grid">
+                <div class="icon-item" data-id="chat-1" onclick="revealChat(this, 'We once discussed what a dog\'s bark sounds like in Bangladesh… I don\'t know why 😂')">
+                    <i class="fa-solid fa-dog"></i>
+                </div>
+                <div class="icon-item" data-id="chat-2" onclick="revealChat(this, 'We even chat while one of us is asleep 😴💤')">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+                <div class="icon-item" data-id="chat-3" onclick="revealChat(this, 'That\'s when I realized... hmm, he\'s a bit \'weird\' like me 🤣')">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+            </div>
+
+            <div id="chat-reveal" class="icon-reveal-text"></div>
+            <button id="chat-continue-btn" class="btn" disabled onclick="nextPage('chat-page', 'about-page')">Continue ➡</button>
+        </div>
+
+        <div id="about-page" class="page">
+            <h2>My Buddy in a Nutshell 🌶️🌍💖</h2>
+            <p class="center-text" style="font-style: italic; color: var(--light-text);">
+                If anyone's curious who my buddy is, come here and I'll give you a sneak peek... but don't tell anyone 😏
+            </p>
+            <hr style="border-color: var(--accent-color);">
+
+            <div class="buddy-detail">
+                <span class="emoji">🌶️</span>
+                <p><strong>Spice Lover:</strong> If a meal isn't spicy, it feels like chatting without emojis... bland! 🌶️😂</p>
+            </div>
+            <div class="buddy-detail">
+                <span class="emoji">✈️</span>
+                <p><strong>World-Traveling Dreamer:</strong> His dream? Traveling the world! I can only say: prepare for me to be your virtual travel partner 😎🌍</p>
+            </div>
+            <div class="buddy-detail">
+                <span class="emoji">👶👦</span>
+                <p><strong>Good Child & Sibling:</strong> His family is also blessed to have such a good child/sibling <span class="highlight">💖</span></p>
+            </div>
+            <div class="buddy-detail">
+                <span class="emoji">🌡️</span>
+                <p><strong>Favorite Temperature: 25–30°C:</strong> He's comfortable at this temperature, just like my heart whenever he sends me a long chat <span class="highlight">🥵❄️</span></p>
+            </div>
+            <div class="buddy-detail">
+                <span class="emoji">💌</span>
+                <p><strong>Likes to Be Attentive to Others:</strong> People who know him often receive sweet attention... but I get the extra version 😏</p>
+            </div>
+            <div class="buddy-detail">
+                <span class="emoji">🗨️</span>
+                <p><strong>Top Skill: Talking to Me for Hours:</strong> It can be hours, random, but it always makes me smile <span class="highlight">🤭💖</span></p>
+            </div>
+            
+            <p class="center-text" style="margin-top: 30px; font-style: italic;">
+                So yeah, that's my buddy's short but random version... if you want to know more, just talk to me for hours <span class="highlight">😏💖</span>
+            </p>
+            <button class="btn" onclick="nextPage('about-page', 'standout-page')">Continue ➡</button>
+        </div>
+
+        <div id="standout-page" class="page">
+            <h2>Why You Stand Out ✨</h2>
+            <p class="center-text">Out of hundreds of matches that passed by, you're the only one who's always different.
+                Click the icons below and I'll show you why 👇</p>
+            
+            <div class="icon-grid" id="standout-icons">
+                <div class="icon-item" onclick="revealStandOut(this, '💡', 'There\'s always a solution from you, even for trivial things.')">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div class="icon-item" onclick="revealStandOut(this, '🤝', 'You understand me, even when I can\'t explain it well.')">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div class="icon-item" onclick="revealStandOut(this, '🌟', 'Your compliments are simple, but they make me smile all day.')">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+
+            <div id="standout-reveal" class="icon-reveal-text"></div>
+
+            <p class="center-text" style="margin-top: 30px; font-weight: 700;">
+                And all of that is enough to make me realize... you’re my favorite match ever, buddy 💕
+            </p>
+
+            <button class="btn" onclick="nextPage('standout-page', 'climax-page')">Continue ➡</button>
+        </div>
+
+        <div id="climax-page" class="page">
+            <h2>The Chats That Made Me Go ‘Aww’</h2>
+            <p class="center-text">
+                Among all those random chats, there are a few messages that truly stuck in my heart. Click the cards to see each moment.
+            </p>
+            
+            <div class="chat-grid">
+                <div class="chat-card" data-card-id="1" onclick="openChatModal(1, this)">
+                    <span class="card-icon">💡</span>
+                    <div class="card-preview">Simple Solution</div>
+                </div>
+                <div class="chat-card" data-card-id="2" onclick="openChatModal(2, this)">
+                    <span class="card-icon">✨</span>
+                    <div class="card-preview">Sweet Compliment</div>
+                </div>
+                <div class="chat-card" data-card-id="3" onclick="openChatModal(3, this)">
+                    <span class="card-icon">😴</span>
+                    <div class="card-preview">Sleep Time Chat</div>
+                </div>
+            </div>
+            
+            <button id="climax-continue-btn" class="btn" disabled onclick="nextPage('climax-page', 'closing-page')">Continue ➡</button>
+        </div>
+
+        <div id="closing-page" class="page">
+            <h2>Final Message <span class="highlight">❤️</span></h2>
+            <hr style="border-color: var(--accent-color);">
+            <p>Buddy, I never expected to meet you from a strange bot.</p>
+            <p>This one month felt random, but it also felt just right.</p>
+            <p>Happy Birthday once again and happy 1 Month of being my buddy. May our story continue.</p>
+            
+            <p class="center-text" style="margin-top: 40px; font-size: 1.2em; font-weight: 700; color: var(--secondary-color);">
+                From random match... to my favorite person. Always, your buddy <span class="highlight">💕</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA CHAT FOR CLIMAX PAGE ---
+        const chatData = {
+            1: {
+                title: "Simple Solution 💡",
+                intro: "You can always calm my panic. Even when I was panicking looking for a lost item, your response was always soothing.",
+                quote: "Don't be worry, Inshallah hope u find it or we will buy newww. 🥰",
+                additional: "Your simple way of overcoming panic: immediately providing certainty.",
+            },
+            2: {
+                title: "Sweet Compliment ✨",
+                intro: "Ever felt overwhelmed by a compliment? Here's an example of how simple words can be the best mood booster!",
+                quote: "My sweet buddy, My kind buddy, My dear buddy.",
+                additional: "A series of repeated words that always manage to make me smile to myself. Thank you for being the best source of validation.",
+            },
+            3: {
+                title: "Sleep Time Chat 😴",
+                intro: "This is the true definition of a 'Buddy': The one who talks to you, even when you're sound asleep. It sounds crazy, but it's really sweet.",
+                quote: "I know u sleeping but I talking with u here huhu crazy.",
+                additional: "You don't just chat when I'm sleeping, but you're also always worried if I don't pick up the phone, and patient waiting for me when I'm busy working. This sincerity makes me not want to end this 'subscription'.",
+            }
+        };
+
+        // --- GLOBAL VARIABLES ---
+        // PENTING: Menggunakan 'your buddy' rentan dilihat di Source Code. Ganti dengan password unik!
+        const CORRECT_ANSWER = "your buddy"; // Ganti dengan jawaban yang lebih unik
+        let openedChats = new Set();
+        let clickedStandOut = false; // Variabel ini tidak digunakan di logic Anda, saya bisa menghapusnya atau membiarkannya. Saya biarkan untuk jaga-jaga.
+        let clickedRandomChats = new Set();
+        let currentFavoriteCard = null;
+
+        // --- NAVIGATION LOGIC ---
+        function nextPage(currentPageId, targetPageId) {
+            document.getElementById(currentPageId).classList.remove('active');
+            document.getElementById(targetPageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // --- PAGE 1: LOGIN LOGIC ---
+        function validateLogin() {
+            const input = document.getElementById('login-input');
+            const feedback = document.getElementById('login-feedback');
+            const audio = document.getElementById('myAudio');
+
+            // Logic untuk mencoba memutar audio saat ada interaksi pertama
+            audio.play().catch(error => {
+                console.log("Autoplay blocked. User interaction required.");
+            });
+
+            // TRIM & Lowercase untuk memastikan jawaban sesuai (case-insensitive)
+            if (input.value.toLowerCase().trim() === CORRECT_ANSWER) {
+                feedback.innerHTML = '<span class="highlight">Access Granted! Welcome back! 😊</span>';
+                setTimeout(() => {
+                    nextPage('login-page', 'opening-page');
+                }, 1000);
+            } else {
+                feedback.textContent = "Nope, try again handsome 😎";
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // --- PAGE 4: RANDOM CHAT LOGIC ---
+        function revealChat(element, text) {
+            const revealBox = document.getElementById('chat-reveal');
+            const continueBtn = document.getElementById('chat-continue-btn');
+            
+            // Toggle class clicked agar bisa di-klik beberapa kali
+            const isClicked = element.classList.contains('clicked');
+            element.classList.add('clicked'); // Tetap tambahkan class agar terwarna
+
+            // Tampilkan teks
+            revealBox.textContent = text;
+
+            // Tambahkan ID ke set
+            clickedRandomChats.add(element.dataset.id);
+
+            // Cek apakah semua 3 sudah di-klik
+            if (clickedRandomChats.size === 3) {
+                continueBtn.disabled = false;
+                continueBtn.textContent = 'Continue ➡ (All stories revealed!)';
+            }
+        }
+
+        // --- PAGE 6: STAND OUT LOGIC ---
+        function revealStandOut(element, emoji, text) {
+            const revealBox = document.getElementById('standout-reveal');
+            
+            // Mark element as clicked
+            element.classList.add('clicked');
+            
+            // Show the text
+            revealBox.textContent = `${emoji} ${text}`;
+        }
+        
+        // --- PAGE 7: CLIMAX (MODAL) LOGIC ---
+        function openChatModal(cardId, cardElement) {
+            const data = chatData[cardId];
+            const modal = document.getElementById('chatModal');
+            const favoriteBtn = document.getElementById('favoriteBtn');
+
+            // Update modal content
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalIntroNarasi').textContent = data.intro;
+            document.getElementById('modalChatQuote').textContent = data.quote;
+            document.getElementById('modalAdditionalNarasi').textContent = data.additional;
+
+            // Update state tombol Favorite
+            if (cardId === currentFavoriteCard) {
+                favoriteBtn.classList.add('favorited');
+                document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorited!';
+            } else {
+                favoriteBtn.classList.remove('favorited');
+                document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorite';
+            }
+            
+            // Set data attribute untuk fungsi favorite
+            favoriteBtn.setAttribute('data-card-id', cardId);
+            
+            // Show modal
+            modal.style.display = "block";
+            
+            // Mark card as opened (untuk continue button logic)
+            cardElement.classList.add('card-opened');
+            openedChats.add(cardId);
+            
+            // Check continue button status
+            checkClimaxContinueButton();
+        }
+
+        function closeModal() {
+            document.getElementById('chatModal').style.display = "none";
+        }
+        
+        // Favorite button handler
+        document.getElementById('favoriteBtn').onclick = function() {
+            const cardId = parseInt(this.getAttribute('data-card-id'));
+            
+            // Unfavorite jika sudah difavoritkan
+            if (cardId === currentFavoriteCard) {
+                currentFavoriteCard = null;
+                this.classList.remove('favorited');
+                document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorite';
+            } else {
+                // Set favorite baru
+                currentFavoriteCard = cardId;
+                this.classList.add('favorited');
+                document.getElementById('favoriteText').innerHTML = '<i class="fa-solid fa-heart"></i> Favorited!';
+            }
+        };
+
+        function checkClimaxContinueButton() {
+            const continueBtn = document.getElementById('climax-continue-btn');
+            // Check if at least one card has been opened
+            if (openedChats.size > 0) {
+                continueBtn.disabled = false;
+            } else {
+                continueBtn.disabled = true;
+            }
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('chatModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // --- Initialization on load (ensure first page is correct and input focus) ---
+        document.addEventListener('DOMContentLoaded', () => {
+             // Set the initial active page (Login Page)
+             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+             const loginPage = document.getElementById('login-page');
+             loginPage.classList.add('active');
+             
+             // Fokuskan input saat halaman login aktif
+             document.getElementById('login-input').focus();
+        });
+
+        // Menambahkan listener untuk 'Enter' di halaman login (seperti yang Anda rencanakan)
+        document.getElementById('login-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                validateLogin();
+            }
+        });
+
+    </script>
+</body>
+</html>
